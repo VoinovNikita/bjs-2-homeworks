@@ -8,21 +8,20 @@ function getArrayParams(arr) {
 
 
   //console.log(max);
-  for (let i of arr) {
-    // console.log(i);
-    if (Math.max(i) > max){
-      max = i;
-      // console.log(i)
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > max){
+      max = arr[i]
+      // console.log(msx)
     }
-    if (Math.min(i) < min){
-      min = i;
+    if (arr[i] < min){
+      min = arr[i];
     }
-    sum += i / arr.length;
+    sum += arr[i] / arr.length;
     // console.log(sum);
    
     avg = sum.toFixed(2);
     
-    console.log(avg);
+    // console.log(avg);
     
      
   }
@@ -33,7 +32,8 @@ function getArrayParams(arr) {
 }
 
 
-// console.log(getArrayParams([99, -99, 10]));
+
+// console.log(getArrayParams([1, 2, 3, -100, 10]));
   
 
 
@@ -48,28 +48,43 @@ function worker(arr) {
 
  return sum;
 }
-
+// console.log(worker([5,5,5]))
 
 function makeWork(arrOfArr, func) {
   
   let max = -Infinity;
   
-  
   for (let n = 0; n < arrOfArr.length; n++) {
+    let sumElem = arrOfArr[n];
+    func(sumElem);
+    // console.log(func(sumElem))
+    // console.log(sumElem)
     
-    func(arrOfArr[n]);
-     if (func(arrOfArr[n]) > max) {
-       max = func(arrOfArr[n]);
+     if (func(sumElem) > max) {
+       max = func(sumElem);
      }
     
   };
-
+  
   
   return max
 }
 // console.log(makeWork([[1,2,3],[4,5,6]], worker));
 // makeWork([[10,10,20],[20,19,10]],worker);
 // // Задание 3
-// function worker2(arr) {
-//   // Ваш код
-// }
+function worker2(arr) {
+  let max = -Infinity;
+  let min = Infinity;
+  let diff;
+  for (let i = 0; i < arr.length; i ++) {
+    if (arr[i] > max) {
+      max = arr[i];
+    }
+    if (arr[i] < min) {
+      min = arr[i];
+    }
+    diff = max - min;
+  }
+  return diff 
+}
+
